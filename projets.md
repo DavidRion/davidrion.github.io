@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Projets
+language: fr
 subtitle: Les projets persos, c'est la vie !
 ---
 
