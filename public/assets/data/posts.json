@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Architecture Hexagonale en Java : retour d'expérience sur un projet bancaire",
+    "slug": "architecture-hexagonale-java-retour-experience",
+    "date": "2024-11-15",
+    "tag": "Architecture",
+    "readingTime": 8,
+    "excerpt": "Comment l'architecture hexagonale nous a permis de séparer le domaine métier des détails techniques sur un système de paiement haute disponibilité, et les pièges à éviter.",
+    "url": "#"
+  },
+  {
+    "id": 2,
+    "title": "Kubernetes & Observabilité : construire un golden path pour vos équipes",
+    "slug": "kubernetes-observabilite-golden-path",
+    "date": "2024-09-03",
+    "tag": "DevOps",
+    "readingTime": 12,
+    "excerpt": "Retour sur la mise en place d'un stack d'observabilité (OpenTelemetry, Grafana, Loki) standardisée pour 6 squads en mode produit, sans friction pour les développeurs.",
+    "url": "#"
+  }
+]

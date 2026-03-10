@@ -1,0 +1,81 @@
+import { Component } from '@angular/core';
+
+interface SkillGroup {
+  category: string;
+  skills: string[];
+}
+
+@Component({
+  selector: 'app-skills',
+  standalone: true,
+  imports: [],
+  template: `
+    <section id="skills" class="mb-16 scroll-mt-16 lg:mb-36 lg:scroll-mt-24">
+
+      <!-- Mobile sticky header -->
+      <div class="sticky top-0 z-20 -mx-6 mb-6 w-screen bg-slate-900/90 px-6 py-5 backdrop-blur lg:hidden">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200">Skills</h2>
+      </div>
+
+      <div class="group/list space-y-6">
+        @for (group of skillGroups; track group.category) {
+          <div class="group relative transition-all
+                      lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+
+            <!-- Hover card highlight -->
+            <div class="absolute -inset-x-4 -inset-y-3 z-0 hidden rounded-xl transition
+                        lg:-inset-x-6 lg:block
+                        lg:group-hover:bg-slate-800/50
+                        lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]">
+            </div>
+
+            <div class="relative z-10 sm:grid sm:grid-cols-8 sm:gap-8 md:gap-4">
+              <h3 class="sm:col-span-2 text-xs font-semibold uppercase tracking-wide text-slate-500 pt-1 mb-2 sm:mb-0">
+                {{ group.category }}
+              </h3>
+              <ul class="sm:col-span-6 flex flex-wrap gap-2">
+                @for (skill of group.skills; track skill) {
+                  <li>
+                    <span class="inline-flex items-center rounded-full bg-teal-400/10 px-3 py-1
+                                 text-xs font-medium text-teal-300 leading-5">
+                      {{ skill }}
+                    </span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+    </section>
+  `,
+})
+export class SkillsComponent {
+  readonly skillGroups: SkillGroup[] = [
+    {
+      category: 'Backend',
+      skills: ['Java 8/11/17', 'Kotlin', 'Spring Boot', 'Spring Data JPA', 'REST', 'Microservices'],
+    },
+    {
+      category: 'Frontend',
+      skills: ['Angular', 'TypeScript', 'Bootstrap', 'Material Design', 'HTML/CSS'],
+    },
+    {
+      category: 'Architecture',
+      skills: ['DDD', 'Clean Architecture', 'Microservices', 'Event-Driven', 'CQRS', 'SOLID'],
+    },
+    {
+      category: 'Cloud & DevOps',
+      skills: ['Cloud Foundry', 'Concourse CI', 'Jenkins', 'Docker', 'CI/CD'],
+    },
+    {
+      category: 'Qualité',
+      skills: ['TDD', 'JUnit', 'Selenium', 'SonarQube', 'Clean Code', 'Software Craftsmanship'],
+    },
+    {
+      category: 'Data',
+      skills: ['SQL Oracle', 'PostgreSQL', 'MySQL', 'Autosys', 'Batch'],
+    },
+  ];
+}

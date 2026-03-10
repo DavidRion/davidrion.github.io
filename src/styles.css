@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Print optimisation — Export PDF propre */
+@media print {
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: #111 !important;
+    font-size: 11pt;
+  }
+  .print-break-before {
+    break-before: page;
+  }
+  a[href]::after {
+    content: none !important;
+  }
+  section {
+    box-shadow: none !important;
+  }
+}
