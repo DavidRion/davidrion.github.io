@@ -8,8 +8,9 @@
   <ol class="group/list space-y-2">
     @for (exp of experiences; track exp.role) {
       <li class="mb-6">
-        <div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4
-                    lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+        <a [href]="exp.companyUrl" target="_blank" rel="noopener"
+           class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4
+                  lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
 
           <!-- Hover card highlight -->
           <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-xl transition
@@ -29,12 +30,15 @@
 
           <!-- Content -->
           <div class="z-10 sm:col-span-6">
-            <h3 class="font-medium leading-snug">
-              <span class="text-slate-200 group-hover:text-teal-300 transition-colors duration-200">
-                {{ exp.role }}
-              </span>
+            <h3 class="inline-flex items-center gap-1 font-medium leading-snug text-slate-200 group-hover:text-teal-300 transition-colors duration-200">
+              {{ exp.role }}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                   class="inline-block h-4 w-4 shrink-0 translate-y-px transition-transform duration-200
+                          group-hover:-translate-y-1 group-hover:translate-x-1">
+                <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+              </svg>
             </h3>
-            <p class="mt-0.5 text-sm font-normal text-slate-500">{{ exp.company }}</p>
+            <p class="mt-0.5 text-sm font-normal text-slate-500">{{ exp.company }} · <span class="text-slate-600">{{ exp.location }}</span></p>
 
             <!-- Expertise & Leadership -->
             @if (exp.expertise.length > 0) {
@@ -54,33 +58,58 @@
             <!-- Projets Majeurs -->
             @if (exp.projects.length > 0) {
               <div class="mt-3">
-                <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1.5">Projets Majeurs</p>
-                <ul class="space-y-2">
+                @if (exp.expertise.length > 0) {
+                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2">Projets Majeurs</p>
+                }
+                <ul class="space-y-4">
                   @for (project of exp.projects; track project.name) {
-                    <li class="text-sm leading-normal text-slate-400">
-                      <span class="font-medium text-slate-300">{{ project.name }}</span>
-                      @if (project.period) {
-                        <span class="text-slate-500"> | {{ project.period }}</span>
+                    <li>
+                      @if (exp.expertise.length > 0) {
+                        <p class="text-sm font-medium text-slate-300">
+                          {{ project.name }}
+                          @if (project.period) {
+                            <span class="font-normal text-slate-500"> | {{ project.period }}</span>
+                          }
+                        </p>
+                        <p class="text-xs text-slate-500 italic mb-1.5">{{ project.subtitle }}</p>
                       }
-                      <span class="text-slate-500"> — </span>{{ project.description }}
+                      <ul class="space-y-1">
+                        @for (bullet of project.bullets; track bullet.label) {
+                          <li class="text-sm leading-normal text-slate-400">
+                            <span class="font-medium text-slate-500">{{ bullet.label }} : </span>
+                            @if (bullet.text) {
+                              {{ bullet.text }}
+                            }
+                            @if (bullet.items) {
+                              <ul class="mt-1 space-y-0.5">
+                                @for (item of bullet.items; track item) {
+                                  <li class="flex items-start gap-2">
+                                    <span class="mt-2 w-1 h-1 rounded-full bg-slate-600 flex-shrink-0"></span>
+                                    {{ item }}
+                                  </li>
+                                }
+                              </ul>
+                            }
+                          </li>
+                        }
+                      </ul>
+                      <ul class="mt-2 flex flex-wrap gap-2">
+                        @for (tag of project.tags; track tag) {
+                          <li>
+                            <span class="inline-flex items-center rounded-full bg-teal-400/10 px-3 py-1
+                                         text-xs font-medium text-teal-300 leading-5">
+                              {{ tag }}
+                            </span>
+                          </li>
+                        }
+                      </ul>
                     </li>
                   }
                 </ul>
               </div>
             }
-
-            <ul class="mt-3 flex flex-wrap gap-2">
-              @for (tag of exp.tags; track tag) {
-                <li>
-                  <span class="inline-flex items-center rounded-full bg-teal-400/10 px-3 py-1
-                               text-xs font-medium text-teal-300 leading-5">
-                    {{ tag }}
-                  </span>
-                </li>
-              }
-            </ul>
           </div>
-        </div>
+        </a>
       </li>
     }
   </ol>
