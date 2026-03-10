@@ -15,15 +15,15 @@ export class SkillsComponent {
   readonly skillGroups: SkillGroup[] = [
     {
       category: 'Backend',
-      skills: ['Java 8/11/17', 'Kotlin', 'Spring Boot', 'Spring Data JPA', 'REST', 'Microservices'],
+      skills: ["Java 8-17", "Kotlin", "Spring Boot", "Spring Data JPA", "Spring Batch", "Spring LDAP", "REST", "Microservices"]
     },
     {
       category: 'Frontend',
-      skills: ['Angular', 'TypeScript', 'Bootstrap', 'Material Design', 'HTML/CSS'],
+      skills: ["Angular", "TypeScript", "Bootstrap", "Material Design", "Tailwind", "HTML/CSS"]
     },
     {
       category: 'Architecture',
-      skills: ['DDD', 'Clean Architecture', 'Microservices', 'Event-Driven', 'CQRS', 'SOLID'],
+      skills: ["DDD", "Clean Architecture", "Microservices", "KISS", "DRY", "SOLID"]
     },
     {
       category: 'Cloud & DevOps',
@@ -35,7 +35,7 @@ export class SkillsComponent {
     },
     {
       category: 'Data',
-      skills: ['SQL Oracle', 'PostgreSQL', 'MySQL', 'Autosys', 'Batch'],
+      skills: ["SQL Oracle", "PostgreSQL", "MySQL", "SQLServer"]
     },
   ];
 }
