@@ -89,7 +89,7 @@ export class ExperienceComponent {
             },
             {
               label: 'Expertise',
-              text: 'Intégration profonde avec l\'Active Directory, gestion des files d\'attente de courriels, et développement de règles d\'affaires rigoureuses pour éviter toute interruption de service non planifiée.',
+              text: 'Intégration profonde avec l\'Active Directory et développement de règles d\'affaires rigoureuses pour éviter toute interruption de service non planifiée.',
             },
           ],
           tags: ['Kotlin', 'Spring Boot', 'Angular', 'LDAP'],
