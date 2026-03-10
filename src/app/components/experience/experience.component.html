@@ -33,17 +33,41 @@
               <span class="text-slate-200 group-hover:text-teal-300 transition-colors duration-200">
                 {{ exp.role }}
               </span>
-              <span class="text-slate-400 font-normal"> · {{ exp.company }}</span>
             </h3>
+            <p class="mt-0.5 text-sm font-normal text-slate-500">{{ exp.company }}</p>
 
-            <ul class="mt-2 space-y-1.5">
-              @for (bullet of exp.bullets; track bullet) {
-                <li class="flex items-start gap-2 text-sm leading-normal text-slate-400">
-                  <span class="mt-2 w-1 h-1 rounded-full bg-slate-600 flex-shrink-0"></span>
-                  {{ bullet }}
-                </li>
-              }
-            </ul>
+            <!-- Expertise & Leadership -->
+            @if (exp.expertise.length > 0) {
+              <div class="mt-3">
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1.5">Expertise & Leadership</p>
+                <ul class="space-y-1.5">
+                  @for (item of exp.expertise; track item) {
+                    <li class="flex items-start gap-2 text-sm leading-normal text-slate-400">
+                      <span class="mt-2 w-1 h-1 rounded-full bg-slate-600 flex-shrink-0"></span>
+                      {{ item }}
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+
+            <!-- Projets Majeurs -->
+            @if (exp.projects.length > 0) {
+              <div class="mt-3">
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1.5">Projets Majeurs</p>
+                <ul class="space-y-2">
+                  @for (project of exp.projects; track project.name) {
+                    <li class="text-sm leading-normal text-slate-400">
+                      <span class="font-medium text-slate-300">{{ project.name }}</span>
+                      @if (project.period) {
+                        <span class="text-slate-500"> | {{ project.period }}</span>
+                      }
+                      <span class="text-slate-500"> — </span>{{ project.description }}
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
 
             <ul class="mt-3 flex flex-wrap gap-2">
               @for (tag of exp.tags; track tag) {
